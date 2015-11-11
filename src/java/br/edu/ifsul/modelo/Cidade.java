@@ -30,7 +30,11 @@ public class Cidade implements Serializable {
     @Length(max = 50, message = "O nome não pode ter mais {max} letras")
     @Column(name = "nome", nullable = false,length = 50)
     private String nome;
-
+    
+    @NotEmpty(message = "A UF deve ser informado")
+    @Length(max = 2, message = "A UF não pode ter mais {max} letras")
+    @Column(name = "uf", nullable = false,length = 2)
+    private String uf;
 
     public Cidade() {
     }
@@ -51,15 +55,23 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
     @Override
     public String toString() {
-        return "Cidade{" + "id=" + id + ", nome=" + nome + '}';
+        return "Cidade{" + "id=" + id + ", nome=" + nome + ", uf=" + uf + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -77,10 +89,5 @@ public class Cidade implements Serializable {
         }
         return true;
     }
-  
-
-  
-
-    
     
 }

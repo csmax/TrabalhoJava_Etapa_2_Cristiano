@@ -1,7 +1,7 @@
 
 package br.edu.ifsul.dao;
 
-import br.edu.ifsul.modelo.Cidade;
+import br.edu.ifsul.modelo.Artigo;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -10,35 +10,35 @@ import javax.persistence.PersistenceContext;
 
 
 @Stateless
-public class CidadeDAO implements Serializable {
+public class ArtigoDAO implements Serializable {
 
     @PersistenceContext(unitName = "TrabalhoJava_Etapa_2_CristianoPU")
     private EntityManager em;
-    private List<Cidade> listarTodos;
+    private List<Artigo> listarTodos;
 
-    public CidadeDAO(){
+    public ArtigoDAO(){
         
     }
     
-    public void persist(Cidade obj) throws Exception {
+    public void persist(Artigo obj) throws Exception {
         em.persist(obj);
     }
     
-    public void merge(Cidade obj) throws Exception {
+    public void merge(Artigo obj) throws Exception {
         em.merge(obj);
     }    
     
-    public void remove(Cidade obj) throws Exception {
+    public void remove(Artigo obj) throws Exception {
         obj = em.merge(obj);
         em.remove(obj);
     }
     
-    public Cidade getObjectById(Integer id) throws Exception {
-        return (Cidade) em.find(Cidade.class, id);
+    public Artigo getObjectById(Integer id) throws Exception {
+        return (Artigo) em.find(Artigo.class, id);
     }    
     
-    public List<Cidade> getListarTodos() {
-        return em.createQuery("from Cidade order by nome").getResultList();
+    public List<Artigo> getListarTodos() {
+        return em.createQuery("from Artigo").getResultList();
     
     }
     
@@ -52,7 +52,7 @@ public class CidadeDAO implements Serializable {
 
 
 
-    public void setListarTodos(List<Cidade> listarTodos) {
+    public void setListarTodos(List<Artigo> listarTodos) {
         this.listarTodos = listarTodos;
     }
 }

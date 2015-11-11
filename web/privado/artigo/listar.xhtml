@@ -6,44 +6,58 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Cadastro de Cidades</ui:define>
+        <ui:define name="titulo">Cadastro de Artigos</ui:define>
         <ui:define name="conteudo">
         <h:form>
             <p:growl/>
 
-            <p:dataTable value="#{controleCidade.dao.listarTodos}"
+            <p:dataTable value="#{controleArtigo.dao.listarTodos}"
                          var="obj" emptyMessage="Nenhum registro encontrado">
                 <f:facet name="header">
                     <p:commandButton value="Novo"
-                                     action="#{controleCidade.novo()}"
+                                     action="#{controleArtigo.novo()}"
                                      ajax="false"/>                    
-                    <p:outputLabel value="Listagem de Cidades"/>
+                    <p:outputLabel value="Listagem de Artigos"/>
                 </f:facet>
                 <f:facet name="footer">
                     <p:outputLabel 
-                        value="Total de registros: #{controleCidade.dao.listarTodos.size()}"/>
+                        value="Total de registros: #{controleArtigo.dao.listarTodos.size()}"/>
                 </f:facet>
                 
                 <p:column headerText="ID">
                     <p:outputLabel value="#{obj.id}"/>
                 </p:column>
                 
-                <p:column headerText="Nome">
-                    <p:outputLabel value="#{obj.nome}"/>
+                <p:column headerText="Titulo">
+                    <p:outputLabel value="#{obj.titulo}"/>
                 </p:column> 
                 
-                <p:column headerText="uf">
-                    <p:outputLabel value="#{obj.uf}"/>
+                <p:column headerText="Assunto">
+                    <p:outputLabel value="#{obj.assunto}"/>
+                </p:column> 
+                                
+                <p:column headerText="Ano Publicação">                    
+                    <p:outputLabel value="#{obj.anoPublicacao.time}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </p:outputLabel>                    
+                </p:column>  
+                
+                <p:column headerText="qualis">
+                    <p:outputLabel value="#{obj.qualis}"/>
+                </p:column> 
+                                   
+                <p:column headerText="Autor">
+                    <p:outputLabel value="#{obj.autor}"/>
                 </p:column> 
                                     
                 <p:column headerText="Ações">
                     <div align="center">
                         <p:commandButton
-                            action="#{controleCidade.editar(obj.id)}"
+                            action="#{controleArtigo.editar(obj.id)}"
                             icon="ui-icon-pencil" ajax="false"
                             id="btnAlterar"/> 
                         <p:commandButton
-                            action="#{controleCidade.remover(obj.id)}"
+                            action="#{controleArtigo.remover(obj.id)}"
                             icon="ui-icon-trash"
                             ajax="false" id="btnExcluir"
                             onclick="if (!confirm('Confirma a exclusão do objeto?')) return false"/>

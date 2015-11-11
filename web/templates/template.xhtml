@@ -21,15 +21,13 @@
                 <h:form id="formMenu" prependId="false">
                     <p:menu>
                         <p:submenu label="Cadastros">
-                            <p:menuitem action="#{controleEstado.listar()}"
-                                        value="Cadastro de estados"
-                                        ajax="false"/>
-                            <p:menuitem action="#{controleCidade.listar()}"
-                                        value="Cadastro de cidades"
-                                        ajax="false"/>
-                            <p:menuitem action="#{controlePessoaFisica.listar()}"
-                                        value="Cadastro de Pessoas Fisicas"
-                                        ajax="false"/>                            
+                             <p:menuitem action="#{controleCidade.listar()}"
+                                        value="Cadastro de Cidades"
+                                        ajax="false"/> 
+                             
+                            <p:menuitem action="#{controleArtigo.listar()}"
+                                        value="Cadastro de Artigos"
+                                        ajax="false"/>                                                      
                         </p:submenu>
                     </p:menu>
                 </h:form>               

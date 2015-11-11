@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html mlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">Edição de Artigos</ui:define>
+        <ui:define name="conteudo">
+        <h:form>
+            <p:growl/>
+            <p:panelGrid columns="2">
+                <f:facet name="header">
+                    <p:outputLabel value="Edição de Artigos"/>
+                </f:facet>
+                <f:facet name="footer">
+                   
+                        <p:commandButton value="Cancelar"
+                                         action="#{controleArtigo.cancelar()}"
+                                         immediate="true" ajax="false"/>
+                        <p:commandButton value="Salvar"
+                                         action="#{controleArtigo.salvar()}"
+                                         ajax="false"
+                                         icon="ui-icon-disk"/>                                         
+                  
+                </f:facet>
+                <h:outputLabel value="ID" />
+                <h:inputText value="#{controleArtigo.objeto.id}" size="10"
+                             readonly="true"/>
+                
+                <p:outputLabel value="Titulo" for="txtTitulo"/>                
+                <p:inputText value="#{controleArtigo.objeto.titulo}"
+                             id="txtTitulo"
+                             size="50" maxlength="50"
+                             placeholder="Obrigatório"/>
+                
+                <p:outputLabel value="Assunto" for="txtAssunto"/>                
+                <p:inputText value="#{controleArtigo.objeto.assunto}"
+                             id="txtAssunto"
+                             size="50" maxlength="50"
+                             placeholder="Obrigatório"/>
+                
+                <p:outputLabel value="anoPublicacao" for="txtAno"/>
+                                    <p:calendar id="txtAno"
+                                                value="#{controleArtigo.objeto.anoPublicacao}"
+                                                size="10" mask="true" pattern="dd/MM/yyyy"
+                                                navigator="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
+                
+                   <p:outputLabel value="Qualis" for="txtQualis"/>                
+                   <p:inputText value="#{controleArtigo.objeto.qualis}"
+                             id="txtQualis"
+                             size="2" maxlength="2"/>
+                   
+                <p:outputLabel value="Autor" for="txtAutor"/>                
+                <p:inputText value="#{controleArtigo.objeto.autor}"
+                             id="txtAutor"
+                             size="50" maxlength="50"
+                             placeholder="Obrigatório"/>
+                                            
+            </p:panelGrid>
+        </h:form>
+      </ui:define>
+    </ui:composition> 
+</html>
+
