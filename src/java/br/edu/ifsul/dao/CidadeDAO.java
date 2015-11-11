@@ -38,7 +38,8 @@ public class CidadeDAO implements Serializable {
     }    
     
     public List<Cidade> getListarTodos() {
-        return em.createQuery("from Cidade order by nome").getResultList();
+        //return em.createQuery("from Cidade order by nome").getResultList();
+       return em.createQuery("from Cidade").getResultList();
     }
     
     public EntityManager getEm() {
